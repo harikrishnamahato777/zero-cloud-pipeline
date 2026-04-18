@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zero-cloud-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zero-cloud
+  template:
+    metadata:
+      labels:
+        app: zero-cloud
+    spec:
+      containers:
+      - name: zero-cloud
+        image: zero-cloud-pipeline:v1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
